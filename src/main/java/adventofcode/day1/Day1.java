@@ -1,5 +1,7 @@
 package adventofcode.day1;
 
+import adventofcode.common.FileUtil;
+
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -11,22 +13,13 @@ import java.util.List;
 public class Day1 {
 
     public Day1() {
-        List<String> input = readFile();
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    private List<String> readFile() {
-        List<String> lines = new ArrayList<>();
-
         try {
-            URI uri = this.getClass().getResource("input.txt").toURI();
-            lines = Files.readAllLines(Paths.get(uri), StandardCharsets.UTF_8);
+            List<String> input = FileUtil.readInputFile(this.getClass());
+            System.out.println(solvePart1(input));
+            System.out.println(solvePart2(input));
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-
-        return lines;
     }
 
     static int solvePart1(List<String> data) {
